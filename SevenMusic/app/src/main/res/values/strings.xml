@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SevenMusic</string>
+    <string name="splash_escape_btn_text">跳过</string>
+</resources>
