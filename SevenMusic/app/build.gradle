@@ -4,6 +4,14 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+static def buildTime() {
+    def date = new Date()
+    def formattedDate = date.format('YYYYMMdd_HHmm')
+    return formattedDate
+}
+//git commit sha
+def gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -14,9 +22,16 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+        buildConfigField "String", "BUILD_TIME", "\"${buildTime()}\""
+        buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
+
     }
     buildTypes {
         release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug{
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -26,6 +41,13 @@ android {
         javaMaxHeapSize '4g'
     }
 
+}
+
+android.applicationVariants.all {
+    variant ->
+        variant.outputs.all {
+            outputFileName = "seven_music__${variant.name}_${buildTime()}_${gitSha}.apk"
+        }
 }
 
 dependencies {
@@ -42,4 +64,5 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
 }
