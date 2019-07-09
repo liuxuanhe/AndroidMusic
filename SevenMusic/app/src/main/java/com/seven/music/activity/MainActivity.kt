@@ -20,7 +20,6 @@ class MainActivity : BaseActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun initView() {
         wv_music.loadUrl(musicUrl)
-        wv_music.settings.javaScriptEnabled = true
     }
 
     override fun initEvent() {

@@ -7,8 +7,9 @@
         tools:context=".activity.MainActivity"
         android:fitsSystemWindows="true">
 
-  <WebView
+  <com.seven.music.util.X5WebView
           android:id="@+id/wv_music"
+          android:layerType="hardware"
           android:layout_width="match_parent"
           android:layout_height="match_parent"/>
 

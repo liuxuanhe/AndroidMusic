@@ -25,6 +25,10 @@ android {
         buildConfigField "String", "BUILD_TIME", "\"${buildTime()}\""
         buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
 
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
+
     }
     buildTypes {
         release {
@@ -41,13 +45,20 @@ android {
         javaMaxHeapSize '4g'
     }
 
-}
-
-android.applicationVariants.all {
-    variant ->
-        variant.outputs.all {
-            outputFileName = "seven_music__${variant.name}_${buildTime()}_${gitSha}.apk"
+    sourceSets {
+        main{
+            jniLibs.srcDirs = ['libs']
         }
+    }
+
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                outputFileName = "seven_music__${defaultConfig.versionName}_${defaultConfig.versionCode}_${variant.name}_${buildTime()}_${gitSha}.apk"
+            }
+    }
+
+
 }
 
 dependencies {
