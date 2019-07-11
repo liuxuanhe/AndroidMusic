@@ -18,9 +18,9 @@ class SplashActivity : BaseActivity() {
     val AD_URL = "https://music.yiroote.com/images/ads/ad720.jpg"
 
     override fun beforeInitView() {
-        if (PreUtil.readBoolean(this,"IS_NOT_FIRST_LOGIN")!!){
-            escapeSplash()
-        }
+//        if (PreUtil.readBoolean(this,"IS_NOT_FIRST_LOGIN")!!){
+//            escapeSplash()
+//        }
     }
 
     override fun getLayoutId(): Int {
@@ -37,14 +37,14 @@ class SplashActivity : BaseActivity() {
         Glide.with(this).load(AD_URL).into(iv_ad);
     }
 
+    override fun initEvent() {
+        timer.schedule(task, 1000, 1000)
+    }
+
     private fun escapeSplash() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
-    }
-
-    override fun initEvent() {
-        timer.schedule(task, 1000, 1000)
     }
 
     private var task: TimerTask = object : TimerTask() {

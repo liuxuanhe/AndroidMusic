@@ -24,7 +24,6 @@ abstract class BaseActivity : AppCompatActivity() {
             setContentView(getLayoutId())
         }
 
-
         initView()
 
         initEvent()
