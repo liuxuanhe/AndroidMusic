@@ -11,4 +11,12 @@
         <!-- Customize your theme here. -->
         <item name="android:background">@color/colorAccent</item>
     </style>
+
+
+    <style name="MusicTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowBackground">@drawable/splash_bg</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>
