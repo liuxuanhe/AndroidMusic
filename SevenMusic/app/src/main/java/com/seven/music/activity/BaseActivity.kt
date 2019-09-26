@@ -29,6 +29,18 @@ abstract class BaseActivity : AppCompatActivity() {
         initEvent()
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     abstract fun beforeInitView()
 
     abstract fun getLayoutId(): Int
@@ -53,7 +65,7 @@ abstract class BaseActivity : AppCompatActivity() {
             val window = window
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             window.decorView.systemUiVisibility =
-                SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or SYSTEM_UI_FLAG_LAYOUT_STABLE
+                SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or  SYSTEM_UI_FLAG_LAYOUT_STABLE
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             window.statusBarColor = long.toInt()
         }

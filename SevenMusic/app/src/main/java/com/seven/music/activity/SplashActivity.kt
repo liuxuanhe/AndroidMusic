@@ -13,18 +13,18 @@ class SplashActivity : BaseActivity() {
 
     var timer = Timer()
 
-    var countDownCount = 5
+    var countDownCount = 3
 
     val AD_URL = "https://music.yiroote.com/images/ads/ad720.jpg"
+
+    override fun getLayoutId(): Int {
+        return R.layout.activity_splash
+    }
 
     override fun beforeInitView() {
 //        if (PreUtil.readBoolean(this,"IS_NOT_FIRST_LOGIN")!!){
 //            escapeSplash()
 //        }
-    }
-
-    override fun getLayoutId(): Int {
-        return R.layout.activity_splash
     }
 
     override fun initView() {
@@ -34,7 +34,7 @@ class SplashActivity : BaseActivity() {
             PreUtil.write(this, "IS_NOT_FIRST_LOGIN", true)
         }
 
-        Glide.with(this).load(AD_URL).into(iv_ad);
+        Glide.with(this).load(AD_URL).into(iv_ad)
     }
 
     override fun initEvent() {
@@ -53,7 +53,7 @@ class SplashActivity : BaseActivity() {
                 btn_escape.text = countDownCount.toString()
                 countDownCount--
                 if (countDownCount < 0) {
-                    timer.cancel();
+                    timer.cancel()
                     btn_escape.text = "跳过"
                     btn_escape.isEnabled = true
                 }

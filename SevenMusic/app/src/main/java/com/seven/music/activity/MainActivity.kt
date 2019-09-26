@@ -1,6 +1,7 @@
 package com.seven.music.activity
 
 import android.annotation.SuppressLint
+import android.view.Menu
 import androidx.annotation.ColorLong
 import com.seven.music.R
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,14 +20,24 @@ class MainActivity : BaseActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun initView() {
-        wv_music.loadUrl(musicUrl)
+//        wv_music.loadUrl(musicUrl)
+        main_toolbar.title = "Title"
+        main_toolbar.subtitle = "Sub Title"
+        setSupportActionBar(main_toolbar)
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        getMenuInflater().inflate(R.menu.menu_main, menu)
+        return true
+    }
+
 
     override fun initEvent() {
 
     }
 
-    override fun setStatusColor(@ColorLong long: Long){
+    override fun setStatusColor(@ColorLong long: Long) {
         super.setStatusColor(0xff242124)
     }
 
